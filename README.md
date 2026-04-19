@@ -78,3 +78,17 @@ plt.rcParams['axes.unicode_minus'] = False
 
 ### 💡 결론
 P-value가 0.05 미만으로 매우 작게 나타나, **역세권 대여소와 비역세권 대여소 간의 쏠림 현상 차이는 통계적으로 매우 유의미함**을 확인했습니다. 즉, 지하철역과 연계된 대여소일수록 출퇴근 목적의 편도 이용이 많아 자전거 재배치(보충/회수) 작업이 더 집중적으로 필요하다는 인사이트를 도출할 수 있습니다.
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8, 6))
+sns.barplot(x='역세권여부', y='대여반납차이', data=df, palette='pastel')
+
+plt.title('역세권 vs 비역세권 대여/반납 쏠림 현상 비교', fontsize=16)
+plt.xlabel('대여소 위치', fontsize=14)
+plt.ylabel('대여/반납 차이 (건)', fontsize=14)
+
+# 차트를 'chart.png'라는 이름의 이미지 파일로 저장
+plt.savefig('chart.png', dpi=300, bbox_inches='tight')
+plt.show()
